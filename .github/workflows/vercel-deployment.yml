@@ -15,9 +15,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
-          cache: 'npm'
+      - uses: pnpm/action-setup@v2
+        with:
+          version: '9.1.0'
+          run_install: false
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: pnpm install --no-frozen-lockfile
       - name: Run ESLint
         run: npm run lint
 
@@ -29,9 +32,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
-          cache: 'npm'
+      - uses: pnpm/action-setup@v2
+        with:
+          version: '9.1.0'
+          run_install: false
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: pnpm install --no-frozen-lockfile
       - name: Run tests
         run: npm test
 
@@ -49,7 +55,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
-          cache: 'npm'
+      - uses: pnpm/action-setup@v2
+        with:
+          version: '9.1.0'
+          run_install: false
           
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
